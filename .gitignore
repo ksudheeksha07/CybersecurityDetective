@@ -38,4 +38,4 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
-!data/processed/random_forest_model.pkl
+!data/processed/random_forest_model.pkl!data/processed/preprocessing_pipeline.pkl
