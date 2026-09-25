@@ -29,10 +29,14 @@ jobs:
           python --version
           pip install -r requirements.txt
 
-      - name: Check repository files
+      - name: Check model file
         run: |
-          echo "Repository contents:"
-          find . -maxdepth 3 -type f | sort
+          echo "Checking production model..."
+          ls -lah data/processed/
+          git status --short
+          git ls-files data/processed/random_forest_model.pkl
+          test -f data/processed/random_forest_model.pkl
+          stat data/processed/random_forest_model.pkl
 
       - name: Run tests
         run: |
