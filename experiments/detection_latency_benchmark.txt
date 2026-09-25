@@ -1,0 +1,10 @@
+Detection Latency Benchmark
+============================================================
+Flows tested: 100
+Mean latency: 167.401 ms
+Median latency: 106.783 ms
+P95 latency: 397.644 ms
+P99 latency: 501.887 ms
+Minimum latency: 100.582 ms
+Maximum latency: 812.771 ms
+Approx throughput: 5.97 flows/sec

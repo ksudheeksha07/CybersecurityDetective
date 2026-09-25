@@ -1,0 +1,21 @@
+CROSS-DAY EVALUATION
+======================================================================
+
+Training samples: 156157
+Friday temporal test samples: 66925
+Monday unseen benign samples: 502650
+Features: 68
+
+Friday temporal test
+------------------------------
+Accuracy: 0.9983
+Precision: 0.9970
+Recall: 0.9989
+F1: 0.9979
+False Positives: 81
+False Negatives: 30
+
+Monday unseen benign test
+------------------------------
+False positives: 604
+False positive rate: 0.001202

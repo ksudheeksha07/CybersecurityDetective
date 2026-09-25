@@ -1,0 +1,10 @@
+CORRUPTED ROW ANALYSIS
+======================
+
+Suspicious rows: 19
+Total training rows: 158609
+Percentage suspicious: 0.0120%
+
+Labels:
+Label
+BENIGN    19

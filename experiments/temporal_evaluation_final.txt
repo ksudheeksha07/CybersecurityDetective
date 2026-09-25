@@ -1,0 +1,22 @@
+FINAL TEMPORAL EVALUATION
+======================================================================
+
+Training samples: 156157
+Testing samples: 66925
+Features: 68
+
+Accuracy: 0.9983
+Precision: 0.9970
+Recall: 0.9989
+F1: 0.9979
+False Positives: 81
+False Negatives: 30
+
+              precision    recall  f1-score   support
+
+      BENIGN       1.00      1.00      1.00     39930
+        DDoS       1.00      1.00      1.00     26995
+
+    accuracy                           1.00     66925
+   macro avg       1.00      1.00      1.00     66925
+weighted avg       1.00      1.00      1.00     66925

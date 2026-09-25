@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Investigation #{{ investigation["id"] }}</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 24px 32px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            color: #cbd5e1;
+            margin-bottom: 0;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .label {
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .metric {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .evidence {
+            padding: 14px;
+            margin-bottom: 10px;
+            background: #f9fafb;
+            border-left: 4px solid #2563eb;
+            border-radius: 6px;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 700px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>
+        Investigation #{{ investigation["id"] }}
+    </h1>
+
+    <p>
+        Cybersecurity Detective — Threat Investigation
+    </p>
+</header>
+
+
+<main>
+
+    <div class="card">
+
+        <a href="/">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="label">
+                Prediction
+            </div>
+
+            <div class="metric">
+                {{ investigation["prediction"] }}
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="label">
+                Threat Level
+            </div>
+
+            <div class="metric">
+                {{ investigation["threat_level"] }}
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="label">
+                Risk Score
+            </div>
+
+            <div class="metric">
+                {{ investigation["risk_score"] }}/100
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="label">
+                ML Probability
+            </div>
+
+            <div class="metric">
+                {{ investigation["ml_probability"] }}
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="label">
+                Anomaly Score
+            </div>
+
+            <div class="metric">
+                {{ investigation["anomaly_score"] }}
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="label">
+                Protocol
+            </div>
+
+            <div class="metric">
+                {{ investigation["protocol"] }}
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            Network Information
+        </h2>
+
+        <p>
+            <strong>Source:</strong>
+            {{ investigation["source_ip"] }}:
+            {{ investigation["source_port"] }}
+        </p>
+
+        <p>
+            <strong>Destination:</strong>
+            {{ investigation["destination_ip"] }}:
+            {{ investigation["destination_port"] }}
+        </p>
+
+        <p>
+            <strong>Timestamp:</strong>
+            {{ investigation["timestamp"] }}
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            Threat Evidence
+        </h2>
+
+        {% for item in investigation["evidence"].split(" | ") %}
+
+        <div class="evidence">
+            {{ item }}
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

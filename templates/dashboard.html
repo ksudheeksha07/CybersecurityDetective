@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cybersecurity Detective</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 24px 32px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            color: #cbd5e1;
+        }
+
+        main {
+            padding: 30px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #6b7280;
+        }
+
+        .card strong {
+            font-size: 28px;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: #f9fafb;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .high {
+            font-weight: bold;
+        }
+
+        .critical {
+            font-weight: bold;
+        }
+
+        .medium {
+            font-weight: bold;
+        }
+
+        .low {
+            font-weight: bold;
+        }
+
+        .view-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .view-link:hover {
+            text-decoration: underline;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+
+        @media (max-width: 800px) {
+            .summary {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Cybersecurity Detective</h1>
+    <p>Network threat detection and investigation dashboard</p>
+</header>
+
+<main>
+
+    <section class="summary">
+
+        <div class="card">
+            <h3>Total Investigations</h3>
+
+            <strong>
+                {{ investigations|length }}
+            </strong>
+        </div>
+
+
+        <div class="card">
+            <h3>Suspicious</h3>
+
+            <strong>
+                {{ investigations
+                   |selectattr("prediction", "equalto", "SUSPICIOUS")
+                   |list
+                   |length }}
+            </strong>
+        </div>
+
+
+        <div class="card">
+            <h3>High / Critical</h3>
+
+            <strong>
+                {{ investigations
+                   |selectattr("threat_level", "in", ["HIGH", "CRITICAL"])
+                   |list
+                   |length }}
+            </strong>
+        </div>
+
+    </section>
+
+
+    <section class="table-container">
+
+        <h2>Recent Investigations</h2>
+
+        {% if investigations %}
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Protocol</th>
+                    <th>Prediction</th>
+                    <th>Risk</th>
+                    <th>Threat Level</th>
+                    <th>Details</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for investigation in investigations %}
+
+                <tr>
+
+                    <td>
+                        {{ investigation["id"] }}
+                    </td>
+
+
+                    <td>
+                        {{ investigation["timestamp"] }}
+                    </td>
+
+
+                    <td>
+                        {{ investigation["source_ip"] }}:
+                        {{ investigation["source_port"] }}
+                    </td>
+
+
+                    <td>
+                        {{ investigation["destination_ip"] }}:
+                        {{ investigation["destination_port"] }}
+                    </td>
+
+
+                    <td>
+                        {{ investigation["protocol"] }}
+                    </td>
+
+
+                    <td>
+                        {{ investigation["prediction"] }}
+                    </td>
+
+
+                    <td>
+                        {{ investigation["risk_score"] }}
+                    </td>
+
+
+                    <td class="{{ investigation['threat_level']|lower }}">
+                        {{ investigation["threat_level"] }}
+                    </td>
+
+
+                    <td>
+                        <a
+                            class="view-link"
+                            href="/investigation/{{ investigation['id'] }}"
+                        >
+                            View Evidence
+                        </a>
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% else %}
+
+        <div class="empty">
+            No investigations have been recorded yet.
+        </div>
+
+        {% endif %}
+
+    </section>
+
+</main>
+
+</body>
+
+</html>

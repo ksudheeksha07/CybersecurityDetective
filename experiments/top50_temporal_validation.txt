@@ -1,0 +1,16 @@
+TOP-50 FEATURE TEMPORAL VALIDATION
+======================================================================
+
+Features used: 50
+
+Friday temporal test
+------------------------------
+Accuracy: 0.9983
+Precision: 0.9969
+Recall: 0.9989
+F1: 0.9979
+
+Monday unseen benign test
+------------------------------
+False positives: 1330
+False positive rate: 0.002646

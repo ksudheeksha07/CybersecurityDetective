@@ -1,0 +1,2 @@
+Precision,Recall,F1,False_Positive_Rate,False_Negative_Rate,True_Negatives,False_Positives,False_Negatives,True_Positives
+0.015253360910031023,0.002950147507375369,0.004944065027024762,0.1938027882364913,0.9970498524926247,15845,3809,19940,59

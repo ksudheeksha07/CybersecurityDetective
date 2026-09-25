@@ -1,0 +1,10 @@
+Feature,Negative_Count,Percentage,BENIGN,DDoS,Minimum
+Init_Win_bytes_backward,65411,41.2453,38208,27203,-1.0
+Init_Win_bytes_forward,22541,14.2134,22541,0,-1.0
+Flow IAT Min,143,0.0902,129,14,-13.0
+Flow Duration,4,0.0025,4,0,-1.0
+Flow Packets/s,4,0.0025,4,0,-2000000.0
+Flow IAT Mean,4,0.0025,4,0,-1.0
+Flow IAT Max,4,0.0025,4,0,-1.0
+Fwd IAT Min,4,0.0025,0,4,-12.0
+Flow Bytes/s,3,0.0019,3,0,-12000000.0

@@ -1,0 +1,13 @@
+RANDOM FOREST RESULTS
+============================================================
+
+Accuracy: 0.9999
+
+              precision    recall  f1-score   support
+
+      BENIGN       1.00      1.00      1.00     15718
+        DDoS       1.00      1.00      1.00     16000
+
+    accuracy                           1.00     31718
+   macro avg       1.00      1.00      1.00     31718
+weighted avg       1.00      1.00      1.00     31718
