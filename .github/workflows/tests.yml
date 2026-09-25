@@ -31,6 +31,8 @@ jobs:
 
       - name: Check model file
         run: |
+          echo "Repository contents:"
+          find . -maxdepth 3 -type f | sort
           echo "Checking production model..."
           ls -lah data/processed/
           git status --short

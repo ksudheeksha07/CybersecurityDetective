@@ -20,14 +20,14 @@ from src.detection_pipeline import DetectionPipeline
 def sample_features():
 
     df = pd.read_csv(
-        PROJECT_ROOT / "data" / "processed" / "test.csv",
+        PROJECT_ROOT / "tests" / "data" / "sample_network_flow.csv",
         nrows=1
     )
 
     df.columns = df.columns.str.strip()
 
     return (
-        df.drop(columns=["Label"])
+        df
         .iloc[0]
         .to_dict()
     )
@@ -107,3 +107,4 @@ def test_detection_pipeline_rejects_missing_features():
         pipeline.analyze({
             "Destination Port": 80
         })
+
